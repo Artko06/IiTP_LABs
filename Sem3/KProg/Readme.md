@@ -64,7 +64,7 @@
     - **RUN:**
     
     ```
-    nasm -f elf64 hello.asm -o hello.o
+    nasm -f elf64 BST.asm -o BST.o
 
     gcc main.cpp BST.o -o main
 
