@@ -1,0 +1,14 @@
+K:\C#\Лаба 3\lab3\Task3\bin\Debug\net8.0\Task3.exe
+K:\C#\Лаба 3\lab3\Task3\bin\Debug\net8.0\Task3.deps.json
+K:\C#\Лаба 3\lab3\Task3\bin\Debug\net8.0\Task3.runtimeconfig.json
+K:\C#\Лаба 3\lab3\Task3\bin\Debug\net8.0\Task3.dll
+K:\C#\Лаба 3\lab3\Task3\bin\Debug\net8.0\Task3.pdb
+K:\C#\Лаба 3\lab3\Task3\obj\Debug\net8.0\Task3.GeneratedMSBuildEditorConfig.editorconfig
+K:\C#\Лаба 3\lab3\Task3\obj\Debug\net8.0\Task3.AssemblyInfoInputs.cache
+K:\C#\Лаба 3\lab3\Task3\obj\Debug\net8.0\Task3.AssemblyInfo.cs
+K:\C#\Лаба 3\lab3\Task3\obj\Debug\net8.0\Task3.csproj.CoreCompileInputs.cache
+K:\C#\Лаба 3\lab3\Task3\obj\Debug\net8.0\Task3.dll
+K:\C#\Лаба 3\lab3\Task3\obj\Debug\net8.0\refint\Task3.dll
+K:\C#\Лаба 3\lab3\Task3\obj\Debug\net8.0\Task3.pdb
+K:\C#\Лаба 3\lab3\Task3\obj\Debug\net8.0\Task3.genruntimeconfig.cache
+K:\C#\Лаба 3\lab3\Task3\obj\Debug\net8.0\ref\Task3.dll

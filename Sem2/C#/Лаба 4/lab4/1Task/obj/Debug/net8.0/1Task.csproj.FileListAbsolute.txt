@@ -1,0 +1,14 @@
+K:\C#\Лаба 4\lab4\1Task\bin\Debug\net8.0\1Task.exe
+K:\C#\Лаба 4\lab4\1Task\bin\Debug\net8.0\1Task.deps.json
+K:\C#\Лаба 4\lab4\1Task\bin\Debug\net8.0\1Task.runtimeconfig.json
+K:\C#\Лаба 4\lab4\1Task\bin\Debug\net8.0\1Task.dll
+K:\C#\Лаба 4\lab4\1Task\bin\Debug\net8.0\1Task.pdb
+K:\C#\Лаба 4\lab4\1Task\obj\Debug\net8.0\1Task.GeneratedMSBuildEditorConfig.editorconfig
+K:\C#\Лаба 4\lab4\1Task\obj\Debug\net8.0\1Task.AssemblyInfoInputs.cache
+K:\C#\Лаба 4\lab4\1Task\obj\Debug\net8.0\1Task.AssemblyInfo.cs
+K:\C#\Лаба 4\lab4\1Task\obj\Debug\net8.0\1Task.csproj.CoreCompileInputs.cache
+K:\C#\Лаба 4\lab4\1Task\obj\Debug\net8.0\1Task.dll
+K:\C#\Лаба 4\lab4\1Task\obj\Debug\net8.0\refint\1Task.dll
+K:\C#\Лаба 4\lab4\1Task\obj\Debug\net8.0\1Task.pdb
+K:\C#\Лаба 4\lab4\1Task\obj\Debug\net8.0\1Task.genruntimeconfig.cache
+K:\C#\Лаба 4\lab4\1Task\obj\Debug\net8.0\ref\1Task.dll

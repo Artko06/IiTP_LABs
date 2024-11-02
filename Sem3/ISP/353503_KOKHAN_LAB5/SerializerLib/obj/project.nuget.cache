@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "CbcyMtZfCSmnF/nPniWb/Kru6LCojqwF4HOKQnndSJji/9UFuvNH3NfjrN/4lTGL1YJMpKR2W9Uhvd13pQ7lqQ==",
+  "success": true,
+  "projectFilePath": "/home/koxan/IiTP_LABs/Sem3/ISP/353503_KOKHAN_LAB5/SerializerLib/SerializerLib.csproj",
+  "expectedPackageFiles": [
+    "/home/koxan/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.8/microsoft.aspnetcore.app.ref.8.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}

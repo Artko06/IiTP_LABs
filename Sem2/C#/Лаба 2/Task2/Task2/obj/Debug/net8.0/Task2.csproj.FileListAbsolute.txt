@@ -1,0 +1,14 @@
+K:\C#\Лаба 2\Task2\Task2\bin\Debug\net8.0\Task2.exe
+K:\C#\Лаба 2\Task2\Task2\bin\Debug\net8.0\Task2.deps.json
+K:\C#\Лаба 2\Task2\Task2\bin\Debug\net8.0\Task2.runtimeconfig.json
+K:\C#\Лаба 2\Task2\Task2\bin\Debug\net8.0\Task2.dll
+K:\C#\Лаба 2\Task2\Task2\bin\Debug\net8.0\Task2.pdb
+K:\C#\Лаба 2\Task2\Task2\obj\Debug\net8.0\Task2.GeneratedMSBuildEditorConfig.editorconfig
+K:\C#\Лаба 2\Task2\Task2\obj\Debug\net8.0\Task2.AssemblyInfoInputs.cache
+K:\C#\Лаба 2\Task2\Task2\obj\Debug\net8.0\Task2.AssemblyInfo.cs
+K:\C#\Лаба 2\Task2\Task2\obj\Debug\net8.0\Task2.csproj.CoreCompileInputs.cache
+K:\C#\Лаба 2\Task2\Task2\obj\Debug\net8.0\Task2.dll
+K:\C#\Лаба 2\Task2\Task2\obj\Debug\net8.0\refint\Task2.dll
+K:\C#\Лаба 2\Task2\Task2\obj\Debug\net8.0\Task2.pdb
+K:\C#\Лаба 2\Task2\Task2\obj\Debug\net8.0\Task2.genruntimeconfig.cache
+K:\C#\Лаба 2\Task2\Task2\obj\Debug\net8.0\ref\Task2.dll

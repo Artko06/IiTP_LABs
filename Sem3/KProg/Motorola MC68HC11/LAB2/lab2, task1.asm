@@ -1,0 +1,14 @@
+ LDAA #$AB
+ TAB
+ 
+ LSRA
+ LSRA
+ LSRA
+ LSRA
+
+ LSLB
+ LSLB
+ LSLB
+ LSLB
+
+ ABA

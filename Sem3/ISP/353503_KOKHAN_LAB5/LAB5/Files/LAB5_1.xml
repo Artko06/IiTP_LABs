@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCompany xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Company>
+    <Name>Google Inc</Name>
+    <Departments>
+      <HRdepartment>
+        <Name>Central department</Name>
+        <Place>San Francisco</Place>
+      </HRdepartment>
+      <HRdepartment>
+        <Name>Finance</Name>
+        <Place>New York</Place>
+      </HRdepartment>
+    </Departments>
+  </Company>
+  <Company>
+    <Name>Microsoft Corporation</Name>
+    <Departments>
+      <HRdepartment>
+        <Name>Central department</Name>
+        <Place>Washington</Place>
+      </HRdepartment>
+      <HRdepartment>
+        <Name>Research and Development</Name>
+        <Place>New York</Place>
+      </HRdepartment>
+    </Departments>
+  </Company>
+</ArrayOfCompany>

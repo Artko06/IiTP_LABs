@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "t67pkVF5BNoIDCULA1icD6kU5qjDfCg7lXbxJnEitZxBv1opA1HnN5unQb1vBsxG3FkB8bxtiSvj4SVP1IH9zw==",
+  "success": true,
+  "projectFilePath": "/home/koxan/IiTP_LABs/Sem3/ISP/353503_KOKHAN_LAB4/353503_KOKHAN_LAB4.csproj",
+  "expectedPackageFiles": [
+    "/home/koxan/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.8/microsoft.aspnetcore.app.ref.8.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "ZmDTRqvEbmI90ZfFsy0Hc8TYXQ1wOR2AJoQdMQ5upjeoxby+PEuj107Fh+AJV4sBdznOB4aefIgACqDw0/6TXA==",
+  "success": true,
+  "projectFilePath": "/home/koxan/IiTP_LABs/Sem2/C#/Лаба 6/Lab6/Task1/Task1.csproj",
+  "expectedPackageFiles": [
+    "/home/koxan/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.8/microsoft.aspnetcore.app.ref.8.0.8.nupkg.sha512"
+  ],
+  "logs": []
+}

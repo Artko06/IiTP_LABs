@@ -1,0 +1,25 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>image/background.jpeg</file>
+        <file>image/setting.png</file>
+        <file>image/info.png</file>
+        <file>image/menu.png</file>
+        <file>image/settingBackground.jpeg</file>
+        <file>image/background2.jpg</file>
+        <file>image/sea.jpg</file>
+        <file>image/back.png</file>
+        <file>image/rotateShips.png</file>
+        <file>image/secondShip.png</file>
+        <file>image/miss.png</file>
+        <file>image/kill.png</file>
+        <file>image/hit.png</file>
+        <file>image/thirdShip.png</file>
+        <file>image/forthShip.png</file>
+        <file>image/firstShip.png</file>
+        <file>image/errorShips.jpg</file>
+        <file>image/rightHand.png</file>
+        <file>image/leftHand.png</file>
+        <file>image/Aim.png</file>
+        <file>image/stats.png</file>
+    </qresource>
+</RCC>

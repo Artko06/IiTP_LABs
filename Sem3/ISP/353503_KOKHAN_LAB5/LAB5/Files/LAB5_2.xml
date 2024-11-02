@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Companies>
+  <Company>
+    <Name>Google Inc</Name>
+    <Departments>
+      <Department>
+        <Name>Central department</Name>
+        <Place>San Francisco</Place>
+      </Department>
+      <Department>
+        <Name>Finance</Name>
+        <Place>New York</Place>
+      </Department>
+    </Departments>
+  </Company>
+  <Company>
+    <Name>Microsoft Corporation</Name>
+    <Departments>
+      <Department>
+        <Name>Central department</Name>
+        <Place>Washington</Place>
+      </Department>
+      <Department>
+        <Name>Research and Development</Name>
+        <Place>New York</Place>
+      </Department>
+    </Departments>
+  </Company>
+</Companies>
