@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("353503_KOKHAN_LAB2")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+670866439815679fa773c3ecb2b32c4cfad3aa1c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+75e2c85f15be330d184a992085dbe0152e70b884")]
 [assembly: System.Reflection.AssemblyProductAttribute("353503_KOKHAN_LAB2")]
 [assembly: System.Reflection.AssemblyTitleAttribute("353503_KOKHAN_LAB2")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
