@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab5.UI.Pages.GroupEmployeeWindow"
+             xmlns:models="clr-namespace:Lab5.UI.ViewModels"
+             x:DataType="models:GroupEmployeeViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:convertors="clr-namespace:Lab5.UI.ValueConvertors"
+             xmlns:entities="clr-namespace:Lab5.Domain.Entities;assembly=Lab5.Domain"
+             x:Name="GroupEmployeePage"
+             Title="GroupEmployee">
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior 
+            EventName="Appearing"
+            BindingContext="{Binding Source={x:Reference GroupEmployeePage}, Path=BindingContext}"
+            Command="{Binding Path=UpdateGroupListCommand}"/>
+    </ContentPage.Behaviors>
+
+    <ContentPage.Resources>
+        <convertors:IsNotNullConvertor x:Key="IsNotNullConverter"/>
+        <convertors:ImportanceToColorConvertor x:Key="ImportanceToColorConvertor"/>
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add Group employee" Command="{Binding AddGroupEmployeeCommand}" />
+        <ToolbarItem Text="Add Job responsibilities" Command="{Binding AddJobResponsibilitiesCommand}" />
+    </ContentPage.ToolbarItems>
+
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="Auto,Auto,*"
+              Margin="5">
+            <Picker 
+                Title="Select group employee"
+                ItemsSource="{Binding GroupsEmployee}"
+                SelectedItem="{Binding SelectedGroupEmployee}"
+                ItemDisplayBinding="{Binding NameGroup}">
+                <Picker.Behaviors>
+                    <toolkit:EventToCommandBehavior 
+                        EventName="SelectedIndexChanged"
+                        BindingContext="{Binding Source={x:Reference GroupEmployeePage}, Path=BindingContext}"
+                        Command="{Binding Path=UpdateMembersListCommand}"/>
+                </Picker.Behaviors>
+            </Picker>
+
+            <Border Margin="0, 20, 0, 20"
+                    Grid.Row="1"
+                    IsVisible="{Binding SelectedGroupEmployee, Converter={StaticResource IsNotNullConverter}}">
+                <HorizontalStackLayout>
+                    <Image Source="{Binding SelectedGroupEmployee.PhotoPath}"
+                        HeightRequest="50"
+                        Margin="0, 0, 20, 0"/>
+                    <VerticalStackLayout Padding="5" Spacing="10">
+                        <Label Text="{Binding Path=SelectedGroupEmployee.NameGroup, StringFormat='Group employee: {0}'}"/>
+                        <Label Text="{Binding Path=SelectedGroupEmployee.Salary, StringFormat='Salary : {0}'}"/>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </Border>
+
+            <ScrollView Grid.Row="2"
+                        IsVisible="{Binding SelectedGroupEmployee, Converter={StaticResource IsNotNullConverter}}">
+                <CollectionView ItemsSource="{Binding JobsResponsibilities}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="entities:JobResponsibilities">
+                            <VerticalStackLayout>
+                                <Border Padding="20"
+                                    Margin="0,5,0,5"
+                                    BackgroundColor="{Binding Importance, 
+                                        Converter={StaticResource ImportanceToColorConvertor}}">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="7"/>
+                                    </Border.StrokeShape>
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding Source={RelativeSource 
+                                                AncestorType={x:Type models:GroupEmployeeViewModel}},
+                                                Path=ShowDetailsCommand}"
+                                            CommandParameter="{Binding .}"/>
+                                    </Border.GestureRecognizers>
+
+                                    <Border.Content>
+                                        <HorizontalStackLayout>
+                                            <VerticalStackLayout>
+                                                <Label Text="{Binding ResponsibilityName}" />
+                                                <Label Text="{Binding Importance, StringFormat='Importance: {0}'}"/>
+                                            </VerticalStackLayout>
+                                        </HorizontalStackLayout>
+                                    </Border.Content>
+                                </Border>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

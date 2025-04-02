@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab3.Pages.SQLitePage"
+             Title="SQLite">
+    <VerticalStackLayout>
+        <Frame
+            CornerRadius="30"
+            BorderColor="DimGray"
+            BackgroundColor="DimGray"
+            Padding="7"
+            Margin="10">
+        <Picker
+                x:Name="authorPicker" 
+                Title="Select an author of books" 
+                Loaded="LoadAuthors"
+                SelectedIndexChanged="OnAuthorSelected"
+                ItemDisplayBinding="{Binding Name}"
+                FontSize="Medium"
+                TitleColor="Black"
+                TextColor="Black"
+
+            />
+        </Frame>
+
+        <CollectionView x:Name="booksCollectionView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Label FontSize="Large">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding Title}"/>
+                                <Span Text=" ( "/>
+                                <Span Text="{Binding CountPages}"/>
+                                <Span Text=" страниц )"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

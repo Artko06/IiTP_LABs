@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab5.UI.Pages.AddOrEditJobResponsibilitiesWindow"
+             xmlns:models="clr-namespace:Lab5.UI.ViewModels"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:convertors="clr-namespace:Lab5.UI.ValueConvertors"
+             x:DataType="models:AddOrEditJobResponsibilitiesViewModel"
+             Title="Add or edit job responsibilities">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Command="{Binding AddOrEditJobResponsibilitiesCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <VerticalStackLayout>
+            <Border Margin="10" 
+                    Padding="5">
+                <VerticalStackLayout>
+                    <Label Text="Name" />
+                    <Entry Placeholder="Name" Text="{Binding ResponsibilityName}" />
+                    <Label Text="Deadline" />
+                    <DatePicker Date="{Binding Deadline}" />
+                    <Label Text="Status" />
+                    <Entry Placeholder="Status" Text="{Binding Status}" />
+                    <Label Text="{Binding Importance, StringFormat='Importance: {0}'}" />
+                    <Stepper
+                        Minimum="1"
+                        Maximum="10"
+                        Value="{Binding Importance}">
+                    </Stepper>
+                    <Picker 
+                        Title="{Binding PickerTitle}"
+                        IsEnabled="{Binding IsGroupEmployeeIdChangeable}"
+                        ItemsSource="{Binding GroupsEmployee}"
+                        SelectedItem="{Binding SelectedGroupEmployee}"
+                        ItemDisplayBinding="{Binding NameGroup}">
+                    </Picker>
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>

@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab1.MainPage">
+
+    <Grid RowSpacing="10" ColumnSpacing="10" RowDefinitions="Auto,Auto">
+        <!-- Разметка сетки -->
+        
+
+        <!-- Поле для отображения операций и результата -->
+        <StackLayout Grid.Row="0" Orientation="Vertical" Padding="0,20,20,75" HorizontalOptions="EndAndExpand">
+            
+            <!-- Отображение операций -->
+            <ScrollView
+            Orientation="Horizontal"
+            HorizontalOptions="End">
+            <Label x:Name="OperationLabel"
+                   FontSize="24"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="Center"
+                   TextColor="Gray"
+                   HorizontalTextAlignment="End"
+                   LineBreakMode="NoWrap"
+                   Text=""/>
+            </ScrollView>
+            <!-- Отображение результата -->
+            <ScrollView
+            Orientation="Horizontal"
+            HorizontalOptions="End">
+                <Label x:Name="ResultLabel"
+                   FontSize="48"
+                   Text="0"
+                   LineBreakMode="NoWrap" />
+            </ScrollView>
+        </StackLayout>
+
+        <!-- Сетка для кнопок -->
+        <Grid Grid.Row="1">
+            <!-- Разметка строк и столбцов для кнопок -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Кнопки -->
+            <!-- Первая строка -->
+            <Button Text="%" FontSize="18" Grid.Row="0" Grid.Column="0" BackgroundColor="#A0A0A0" Margin="5" Clicked="PercentButton_Clicked" />
+            <Button Text="|x|" FontSize="18" Grid.Row="0" Grid.Column="1" BackgroundColor="#A0A0A0" Margin="5" Clicked="ModulButton_Clicked" />
+            <Button Text="C" FontSize="18" Grid.Row="0" Grid.Column="2" BackgroundColor="#606060" TextColor="White" Margin="5" Clicked="ClearButton_Clicked" />
+            <Button Text="←" FontSize="18" Grid.Row="0" Grid.Column="3" BackgroundColor="#606060" TextColor="White" Margin="5" Clicked="BackspaceButton_Clicked" />
+
+            <!-- Вторая строка -->
+            <Button Text="1/x" FontSize="18" Grid.Row="1" Grid.Column="0" BackgroundColor="#A0A0A0" Margin="5" Clicked="InverseButton_Clicked" />
+            <Button Text="x²" FontSize="18" Grid.Row="1" Grid.Column="1" BackgroundColor="#A0A0A0" Margin="5" Clicked="SquereButton_Clicked" />
+            <Button Text="√" FontSize="18" Grid.Row="1" Grid.Column="2" BackgroundColor="#A0A0A0" Margin="5" Clicked="SqrtButton_Clicked" />
+            <Button Text="÷" FontSize="18" Grid.Row="1" Grid.Column="3" BackgroundColor="#FFA500" TextColor="White" Margin="5" Clicked="DivideButton_Clicked" />
+
+            <!-- Цифровые кнопки -->
+            <!-- Третья строка -->
+            <Button Text="7" FontSize="18" Grid.Row="2" Grid.Column="0" BackgroundColor="#A0A0A0" Margin="5" Clicked="NumericButton_Clicked" />
+            <Button Text="8" FontSize="18" Grid.Row="2" Grid.Column="1" BackgroundColor="#A0A0A0" Margin="5" Clicked="NumericButton_Clicked" />
+            <Button Text="9" FontSize="18" Grid.Row="2" Grid.Column="2" BackgroundColor="#A0A0A0" Margin="5" Clicked="NumericButton_Clicked" />
+            <Button Text="×" FontSize="18" Grid.Row="2" Grid.Column="3" BackgroundColor="#FFA500" TextColor="White" Margin="5" Clicked="MultiplicationButton_Clicked" />
+
+            <!-- Четвёртая строка -->
+            <Button Text="4" FontSize="18" Grid.Row="3" Grid.Column="0" BackgroundColor="#A0A0A0" Margin="5" Clicked="NumericButton_Clicked" />
+            <Button Text="5" FontSize="18" Grid.Row="3" Grid.Column="1" BackgroundColor="#A0A0A0" Margin="5" Clicked="NumericButton_Clicked" />
+            <Button Text="6" FontSize="18" Grid.Row="3" Grid.Column="2" BackgroundColor="#A0A0A0" Margin="5" Clicked="NumericButton_Clicked" />
+            <Button Text="−" FontSize="18" Grid.Row="3" Grid.Column="3" BackgroundColor="#FFA500" TextColor="White" Margin="5" Clicked="DifferenceButton_Clicked" />
+
+            <!-- Пятая строка -->
+            <Button Text="1" FontSize="18" Grid.Row="4" Grid.Column="0" BackgroundColor="#A0A0A0" Margin="5" Clicked="NumericButton_Clicked" />
+            <Button Text="2" FontSize="18" Grid.Row="4" Grid.Column="1" BackgroundColor="#A0A0A0" Margin="5" Clicked="NumericButton_Clicked" />
+            <Button Text="3" FontSize="18" Grid.Row="4" Grid.Column="2" BackgroundColor="#A0A0A0" Margin="5" Clicked="NumericButton_Clicked" />
+            <Button Text="+" FontSize="18" Grid.Row="4" Grid.Column="3" BackgroundColor="#FFA500" TextColor="White" Margin="5" Clicked="PlusButton_Clicked" />
+
+            <!-- Шестая строка -->
+            <Button Text="±" FontSize="18" Grid.Row="5" Grid.Column="0" BackgroundColor="#A0A0A0" Margin="5" Clicked="SignButton_Clicked" />
+            <Button Text="0" FontSize="18" Grid.Row="5" Grid.Column="1" BackgroundColor="#A0A0A0" Margin="5" Clicked="NumericButton_Clicked" />
+            <Button Text="." FontSize="18" Grid.Row="5" Grid.Column="2" BackgroundColor="#A0A0A0" Margin="5" Clicked="PointButton_Clicked" />
+            <Button Text="=" FontSize="18" Grid.Row="5" Grid.Column="3" BackgroundColor="#FFA500" TextColor="White" Margin="5" Clicked="EqualButton_Clicked" />
+        </Grid>
+    </Grid>
+
+</ContentPage>

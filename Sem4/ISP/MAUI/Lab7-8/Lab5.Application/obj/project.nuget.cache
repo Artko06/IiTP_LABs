@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "kY63sdopG0Y=",
+  "success": true,
+  "projectFilePath": "K:\\MAUI\\Lab5\\Lab5.Application\\Lab5.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\KOXAN\\.nuget\\packages\\mediatr\\12.4.1\\mediatr.12.4.1.nupkg.sha512",
+    "C:\\Users\\KOXAN\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\KOXAN\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,11 @@
+K:\MAUI\Lab5\Lab5.Domain\bin\Debug\net8.0\Lab5.Domain.deps.json
+K:\MAUI\Lab5\Lab5.Domain\bin\Debug\net8.0\Lab5.Domain.dll
+K:\MAUI\Lab5\Lab5.Domain\bin\Debug\net8.0\Lab5.Domain.pdb
+K:\MAUI\Lab5\Lab5.Domain\obj\Debug\net8.0\Lab5.Domain.GeneratedMSBuildEditorConfig.editorconfig
+K:\MAUI\Lab5\Lab5.Domain\obj\Debug\net8.0\Lab5.Domain.AssemblyInfoInputs.cache
+K:\MAUI\Lab5\Lab5.Domain\obj\Debug\net8.0\Lab5.Domain.AssemblyInfo.cs
+K:\MAUI\Lab5\Lab5.Domain\obj\Debug\net8.0\Lab5.Domain.csproj.CoreCompileInputs.cache
+K:\MAUI\Lab5\Lab5.Domain\obj\Debug\net8.0\Lab5.Domain.dll
+K:\MAUI\Lab5\Lab5.Domain\obj\Debug\net8.0\refint\Lab5.Domain.dll
+K:\MAUI\Lab5\Lab5.Domain\obj\Debug\net8.0\Lab5.Domain.pdb
+K:\MAUI\Lab5\Lab5.Domain\obj\Debug\net8.0\ref\Lab5.Domain.dll

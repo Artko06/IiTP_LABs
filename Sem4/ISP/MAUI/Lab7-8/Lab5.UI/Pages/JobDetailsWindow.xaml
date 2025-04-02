@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab5.UI.Pages.JobDetailsWindow"
+             xmlns:convertors="clr-namespace:Lab5.UI.ValueConvertors"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:models="clr-namespace:Lab5.UI.ViewModels"
+             x:Name="JobDetailsPage"
+             x:DataType="models:JobDetailsViewModel"
+             Title="Job responsibilities details">
+    
+    
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior 
+            EventName="Appearing"
+            BindingContext="{Binding Source={x:Reference JobDetailsPage}, Path=BindingContext}"
+            Command="{Binding Path=GetByIdJobResponsibilitiesCommand}"/>
+    </ContentPage.Behaviors>
+
+    <ContentPage.Resources>
+        <convertors:DateToStringConvertor x:Key="DateToStringConverter" />
+    </ContentPage.Resources>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit job responsibilities" Command="{Binding EditJobResponsibilitiesCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <VerticalStackLayout>
+            <Frame Padding="10" Margin="20">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="{Binding ResponsibilityName, StringFormat='Name: {0}'}"/>
+                    <Label Text="{Binding Importance, StringFormat='Importance: {0}'}"/>
+                    <Label Text="{Binding Deadline, Converter={StaticResource DateToStringConverter}, StringFormat='Deadline: {0}'}"/>
+                    <Label Text="{Binding Status, StringFormat='Status: {0}'}"/>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

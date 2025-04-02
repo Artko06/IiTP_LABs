@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Lab2.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Lab2.Pages"
+    Shell.FlyoutBehavior="Flyout"
+    Title="Lab2">
+
+    <FlyoutItem Title="Calculator" FlyoutDisplayOptions="AsSingleItem">
+        <ShellContent Route="CalculatorPage" ContentTemplate="{DataTemplate local:CalculatorPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="ProgressBar" FlyoutDisplayOptions="AsSingleItem">
+        <ShellContent Route="ProgressBarPage" ContentTemplate="{DataTemplate local:ProgressBarPage}" />
+    </FlyoutItem>
+
+</Shell>

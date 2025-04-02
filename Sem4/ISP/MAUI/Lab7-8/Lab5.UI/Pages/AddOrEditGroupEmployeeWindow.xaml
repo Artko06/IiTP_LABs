@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab5.UI.Pages.AddOrEditGroupEmployeeWindow"
+             xmlns:models="clr-namespace:Lab5.UI.ViewModels"
+             x:DataType="models:AddGroupEmployeeViewModel"
+             Title="Add or edit group">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Command="{Binding AddOrEditGroupEmployeeCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <VerticalStackLayout>
+            <Border Margin="10" 
+                    Padding="5">
+                <VerticalStackLayout>
+                    <Label Text="Name group" />
+                    <Entry Placeholder="Name" Text="{Binding NameGroup}" />
+                    <Label Text="Salary" />
+                    <Entry Placeholder="Salary group" Text="{Binding Salary}" />
+                    <Image Source="{Binding PhotoPath}"
+                           HeightRequest="200"/>
+                    <Button Margin="0, 20, 0, 20"
+                            Text="Select photo"
+                            Command="{Binding SelectImageCommand}" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>

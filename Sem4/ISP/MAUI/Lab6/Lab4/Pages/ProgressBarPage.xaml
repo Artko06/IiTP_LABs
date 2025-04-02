@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lab4.Pages.ProgressBarPage"
+             Title="ProgressBar">
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand">
+        <StackLayout VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Margin="0,20,0,0">
+            <Label Text="Welcome to .NET MAUI!"
+                           x:Name="StatusLabel"
+                           FontSize="20"
+                           FontAttributes="Bold">
+
+            </Label>
+        </StackLayout>
+        <VerticalStackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <ProgressBar 
+                    x:Name="ProgressBar"
+                    ProgressColor="#3CFF1E"
+                    Progress="0"
+                    WidthRequest="350"
+                    IsVisible="true"/>
+            <Label 
+                    x:Name="ProgressLabel"
+                    Text="0%"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+        <StackLayout VerticalOptions="End" HorizontalOptions="FillAndExpand" Margin="0,20,0,0">
+            <StackLayout Orientation="Horizontal" VerticalOptions="End">
+                <Button
+                        Clicked="StartButton_Clicked"
+                        Text="Start" HorizontalOptions="FillAndExpand" Margin="0, 0,15,50" 
+                            FontSize="18"
+                            FontAttributes="Bold"/>
+                <Button
+                        Clicked="CancelButton_Clicked"
+                        Text="Cancel" HorizontalOptions="FillAndExpand" Margin="15, 0,0,50"
+                            FontSize="18"
+                            FontAttributes="Bold"/>
+            </StackLayout>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

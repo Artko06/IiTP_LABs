@@ -1,0 +1,15 @@
+K:\MAUI\Lab5\Lab5.Persistense\obj\Debug\net8.0\Lab5.Persistense.GeneratedMSBuildEditorConfig.editorconfig
+K:\MAUI\Lab5\Lab5.Persistense\obj\Debug\net8.0\Lab5.Persistense.AssemblyInfoInputs.cache
+K:\MAUI\Lab5\Lab5.Persistense\obj\Debug\net8.0\Lab5.Persistense.AssemblyInfo.cs
+K:\MAUI\Lab5\Lab5.Persistense\obj\Debug\net8.0\Lab5.Persistense.csproj.CoreCompileInputs.cache
+K:\MAUI\Lab5\Lab5.Persistense\obj\Debug\net8.0\Lab5.Persistense.csproj.AssemblyReference.cache
+K:\MAUI\Lab5\Lab5.Persistense\bin\Debug\net8.0\Lab5.Persistense.deps.json
+K:\MAUI\Lab5\Lab5.Persistense\bin\Debug\net8.0\Lab5.Persistense.dll
+K:\MAUI\Lab5\Lab5.Persistense\bin\Debug\net8.0\Lab5.Persistense.pdb
+K:\MAUI\Lab5\Lab5.Persistense\bin\Debug\net8.0\Lab5.Domain.dll
+K:\MAUI\Lab5\Lab5.Persistense\bin\Debug\net8.0\Lab5.Domain.pdb
+K:\MAUI\Lab5\Lab5.Persistense\obj\Debug\net8.0\Lab5.Per.D7F0EFFA.Up2Date
+K:\MAUI\Lab5\Lab5.Persistense\obj\Debug\net8.0\Lab5.Persistense.dll
+K:\MAUI\Lab5\Lab5.Persistense\obj\Debug\net8.0\refint\Lab5.Persistense.dll
+K:\MAUI\Lab5\Lab5.Persistense\obj\Debug\net8.0\Lab5.Persistense.pdb
+K:\MAUI\Lab5\Lab5.Persistense\obj\Debug\net8.0\ref\Lab5.Persistense.dll
