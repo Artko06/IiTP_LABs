@@ -1,0 +1,45 @@
+﻿@* Views/Debug/Claims.cshtml *@
+@{
+    ViewData["Title"] = "Debug Claims";
+}
+
+<div class="container mt-5">
+    <h2>Claims пользователя</h2>
+
+    <div class="card mb-3">
+        <div class="card-header">
+            <h4>Роли</h4>
+        </div>
+        <div class="card-body">
+            @foreach (var role in ViewBag.Roles)
+            {
+                <span class="badge bg-primary me-2">@role</span>
+            }
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h4>Все Claims</h4>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var claim in ViewBag.Claims)
+                    {
+                        <tr>
+                            <td><code>@claim.Type</code></td>
+                            <td>@claim.Value</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

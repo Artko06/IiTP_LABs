@@ -1,0 +1,50 @@
+﻿@using System.Security.Claims
+
+@if (User.Identity.IsAuthenticated)
+{
+    // Получаем данные пользователя из claims
+    var username = User.Claims.FirstOrDefault(c => c.Type == "preferred_username" || c.Type == ClaimTypes.Name)?.Value ?? User.Identity.Name;
+    var avatar = User.Claims.FirstOrDefault(c => c.Type == "avatar")?.Value ?? "/images/default-profile-picture.png";
+
+    <div class="d-flex align-items-center">
+        <!-- Корзина с отступом -->
+        @await Component.InvokeAsync("Cart")
+
+        <!-- Отступ между корзиной и пользователем -->
+        <div class="ms-3"></div>
+
+        <!-- Пользователь -->
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="@avatar" width="30" alt="User" class="rounded me-2" />
+                @username
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li>
+                    <span class="dropdown-item-text">
+                        <img src="@avatar" width="50" alt="User" class="rounded me-2" />
+                        @username
+                    </span>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                    @if (User.IsInRole("POWER-USER"))
+                    {
+                        <a class="dropdown-item" href="/Admin">Администрирование</a>
+                    }
+                    <form asp-controller="Account" asp-action="LogoutPost" method="post" class="d-inline">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="dropdown-item btn btn-link text-dark p-0">Выход</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+}
+else
+{
+    <div class="ms-4">
+        <a href="@Url.Action("Login", "Account")" class="btn btn-outline-primary me-2">Войти</a>
+        <a href="@Url.Action("Register", "Account")" class="btn btn-primary">Зарегистрироваться</a>
+    </div>
+}

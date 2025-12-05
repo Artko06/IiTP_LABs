@@ -1,0 +1,98 @@
+﻿@model WEB_353503_KOKHAN.Domain.Models.ListModel<WEB_353503_KOKHAN.Domain.Entities.Car>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Каталог Автомобилей";
+
+    var request = ViewContext.HttpContext.Request;
+    var returnUrl = request.Path + request.QueryString.ToUriComponent();
+
+    var categories = ViewData["Categories"] as List<WEB_353503_KOKHAN.Domain.Entities.Category> ?? new
+    List<WEB_353503_KOKHAN.Domain.Entities.Category>();
+
+    string? category = request.Query["category"].ToString();
+    int currentPage = ViewBag.CurrentPage ?? 1;
+    int totalPages = ViewBag.TotalPages ?? 1;
+}
+
+<div class="container">
+    <h1>Каталог Автомобилей</h1>
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    @ViewBag.CurrentCategory
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdown">
+                    <li>
+                        <a class="dropdown-item" asp-controller="Car" asp-route-category="" asp-route-pageNo="1">Все
+                            Автомобили</a>
+                    </li>
+                    @foreach (var cat in categories)
+                    {
+                            <li>
+                                <a class="dropdown-item" asp-controller="Car" asp-route-category="@cat.NormalizedName"
+                                    asp-route-pageNo="1">
+                                @cat.Name
+                                </a>
+                            </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3" id="motorcycleContainer">
+        @foreach (var item in Model.Items)
+        {
+            <div class="col-sm-6 col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-header text-center bg-white">
+                        <img src="@item.ImagePath" class="card-img-top" style="max-width: 200px; height: 100%" />
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title fs-3 fw-bold" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">@item.Name</p>
+                        <p class="card-text fs-5 fw-light" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">@item.Description</p>
+                        <p class="card-text fs-5 fw-bold" style="font-family: 'Arial Black', Gadget, sans-serif;">Цена: @item.Price BYN</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a asp-controller="Cart" asp-action="Add" asp-route-id="@item.Id" asp-route-returnurl="@returnUrl"
+                           class="btn btn-primary">
+                            Добавить в корзину
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+                <a class="page-link" asp-controller="Car" asp-action="Index" asp-route-category="@category"
+                    asp-route-pageNo="@(currentPage - 1)" aria-label="Previous">
+                    <<
+                </a>
+            </li>
+
+            @for (var i = 1; i <= totalPages; i++)
+            {
+                    <li class="page-item @(i == currentPage ? "active" : "")">
+                        <a class="page-link" asp-controller="Car" asp-action="Index" asp-route-category="@category"
+                            asp-route-pageNo="@i">
+                        @i
+                        </a>
+                    </li>
+            }
+
+            <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+                <a class="page-link" asp-controller="Car" asp-action="Index" asp-route-category="@category"
+                    asp-route-pageNo="@(currentPage + 1)" aria-label="Next">
+                    >>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

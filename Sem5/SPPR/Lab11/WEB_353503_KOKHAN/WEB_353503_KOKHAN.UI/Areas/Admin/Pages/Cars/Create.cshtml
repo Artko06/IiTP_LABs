@@ -1,0 +1,62 @@
+﻿@page
+@model WEB_353503_KOKHAN.UI.Areas.Admin.Pages.Cars.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Car</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Car.Name" class="control-label"></label>
+                <input asp-for="Car.Name" class="form-control" required />
+                <span asp-validation-for="Car.Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Car.Description" class="control-label"></label>
+                <textarea asp-for="Car.Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Car.Description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Car.CategoryId" class="control-label"></label>
+                <select asp-for="Car.CategoryId" class="form-control" asp-items="ViewBag.CategoryId" required>
+                    <option value="">-- Select Category --</option>
+                </select>
+                <span asp-validation-for="Car.CategoryId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Car.Price" class="control-label"></label>
+                <input asp-for="Car.Price" class="form-control" type="number" step="0.01" min="0.01" required />
+                <span asp-validation-for="Car.Price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Image" class="form-label">Car Image</label>
+                <input asp-for="Image" type="file" class="form-control" accept="image/*" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+                <div class="form-text">Select an image for the car</div>
+            </div>
+
+            <div class="form-group mb-3">
+                <button type="submit" class="btn btn-primary">Create</button>
+                <a asp-page="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

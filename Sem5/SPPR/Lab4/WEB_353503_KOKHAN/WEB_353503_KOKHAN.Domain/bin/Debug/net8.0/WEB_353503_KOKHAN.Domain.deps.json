@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "WEB_353503_KOKHAN.Domain/1.0.0": {
+        "runtime": {
+          "WEB_353503_KOKHAN.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "WEB_353503_KOKHAN.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

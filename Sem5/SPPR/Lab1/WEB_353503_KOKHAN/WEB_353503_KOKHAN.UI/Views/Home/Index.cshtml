@@ -1,0 +1,67 @@
+﻿@{
+	ViewBag.Title = "Index";
+}
+
+<main class="container">
+	<div>
+		<h1>Лабораторная работа 1</h1>
+	</div>
+	<div>
+		<h2>Список</h2>
+		<ol type="A">
+			<li> элемент 1 списка </li>
+			<li> элемент 2 списка </li>
+		</ol>
+	</div>
+	<hr class="divider">
+	<div>
+		<h2>Форма</h2>
+		<form action="@Url.Action("Index", "Home")" method="post">
+			<div class="row mb-3">
+				<div class="col-sm-10 offset-sm-2">
+					<div class="form-check">
+						<input type="checkbox" class="form-check-input" name="checkbox1"
+							   id="checkbox1"> <label class="form-check-label" for="checkbox1">Чек-бокс 1</label>
+					</div>
+					<div class="form-check">
+						<input type="checkbox" class="form-check-input" name="checkbox2"
+							   id="checkbox2"> <label class="form-check-label" for="checkbox2">Чек-бокс 2</label>
+					</div>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class="col-sm-10 offset-sm-2">
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio"
+							   name="radio1" id="radio1" value="option1" checked> <label class="form-check-label"
+																	for="radio1">Радио-1</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio"
+							   name="radio1" id="radio2" value="option2"> <label class="form-check-label"
+																   for="radio2">Радио-2</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input class="form-check-input" type="radio"
+							   name="radio1" id="radio3" value="option3"> <label class="form-check-label"
+																   for="radio3">Радио-3</label>
+					</div>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="inputLogin1" class="col-sm-2 col-form-label">Логин:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="inputLogin1" name="inputLogin1"
+						   placeholder="Введите имя">
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="inputPassword1" class="col-sm-2 col-form-label">Пароль:</label>
+				<div class="col-sm-10">
+					<input type="password" class="form-control" id="inputPassword1"
+						   name="inputPassword1" placeholder="Введите пароль">
+				</div>
+			</div> <button type="submit" class="btn btn-primary">Отправить</button>
+		</form>
+	</div>
+</main>

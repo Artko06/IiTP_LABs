@@ -1,0 +1,67 @@
+@startuml
+
+entity Club {
+  * id
+  --
+  * name
+  * founded_date
+  * coach
+}
+
+entity Player {
+  * id
+  --
+  * club_id
+  --
+  * first_name
+  * last_name
+  * position
+  * number
+  * birth_date
+}
+
+entity Stadium {
+  * id
+  --
+  * name
+  * city
+  * capacity
+}
+
+entity Match {
+  * id
+  --
+  * home_club_id
+  * away_club_id
+  * stadium_id
+  --
+  * match_date
+  * status
+  * home_score
+  * away_score
+  * referee
+}
+
+entity Sponsor {
+  * id
+  --
+  * name
+}
+
+entity ClubSponsorship {
+  * id
+  --
+  * club_id
+  * sponsor_id
+  --
+  * start_date
+}
+
+Club ||--o{ Player : "has"
+Stadium ||--o{ Match : "hosts"
+Club ||--o{ Match : "home matches"
+Club ||--o{ Match : "away matches"
+Club ||--o{ ClubSponsorship : "has sponsorships"
+Sponsor ||--o{ ClubSponsorship : "provides sponsorships"
+
+@enduml

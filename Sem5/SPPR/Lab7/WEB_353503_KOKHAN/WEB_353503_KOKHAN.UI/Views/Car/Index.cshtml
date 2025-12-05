@@ -1,0 +1,60 @@
+﻿@using WEB_353503_KOKHAN.UI.Extensions
+@model WEB_353503_KOKHAN.Domain.Models.ListModel<WEB_353503_KOKHAN.Domain.Entities.Car>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Каталог Автомобилей";
+
+    var request = ViewContext.HttpContext.Request;
+    var returnUrl = request.Path + request.QueryString.ToUriComponent();
+
+    var categories = ViewData["Categories"] as List<WEB_353503_KOKHAN.Domain.Entities.Category> ?? new
+    List<WEB_353503_KOKHAN.Domain.Entities.Category>();
+
+    string? category = request.Query["category"].ToString();
+    int currentPage = ViewBag.CurrentPage ?? 1;
+    int totalPages = ViewBag.TotalPages ?? 1;
+}
+
+<div class="container">
+    <h1>Каталог Автомобилей</h1>
+
+    <!-- Фильтры -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    @ViewBag.CurrentCategory
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdown">
+                    <li>
+                        <a class="dropdown-item" asp-controller="Car" asp-route-category="" asp-route-pageNo="1">
+                            Все Автомобили
+                        </a>
+                    </li>
+                    @foreach (var cat in categories)
+                    {
+                        <li>
+                            <a class="dropdown-item" asp-controller="Car" asp-route-category="@cat.NormalizedName"
+                               asp-route-pageNo="1">
+                                @cat.Name
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="ajax-content">
+        @if (!Context.Request.IsAjaxRequest())
+        {
+            @await Html.PartialAsync("~/Views/Shared/Components/Car/_CarListPartial.cshtml", Model)
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/site.js"></script>
+}

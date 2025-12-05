@@ -1,0 +1,17 @@
+@startuml
+
+entity Club
+entity Player
+entity Stadium
+entity Match
+entity Sponsor
+entity ClubSponsorship
+
+Club ||--o{ Player : "has"
+Stadium ||--o{ Match : "hosts"
+Club ||--o{ Match : "home matches"
+Club ||--o{ Match : "away matches"
+Club ||--o{ ClubSponsorship : "has sponsorships"
+Sponsor ||--o{ ClubSponsorship : "provides sponsorships"
+
+@enduml

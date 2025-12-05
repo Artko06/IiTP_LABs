@@ -1,0 +1,55 @@
+﻿@using WEB_353503_KOKHAN.BlazorWasm.Services
+@using WEB_353503_KOKHAN.Domain.Entities
+@inject IDataService DataService
+
+@if (!DataService.Success)
+{
+    <p><em>Error: @DataService.ErrorMessage</em></p>
+}
+else if (DataService.Cars.Count == 0)
+{
+    <p>No cars available.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var car in DataService.Cars)
+            {
+                <tr>
+                    <td>@car.Name</td>
+                    <td>@car.Description</td>
+                    <td>
+                        <button class="btn btn-primary" @onclick="() => CarSelected.InvokeAsync(car.Id)">
+                            Подробнее
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@implements IDisposable
+
+@code {
+    [Parameter]
+    public EventCallback<int> CarSelected { get; set; }
+
+    protected override void OnInitialized()
+    {
+        DataService.DataLoaded += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        DataService.DataLoaded -= StateHasChanged;
+    }
+}

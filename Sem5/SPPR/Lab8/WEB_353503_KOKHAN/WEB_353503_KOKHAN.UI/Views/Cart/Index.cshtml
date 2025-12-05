@@ -1,0 +1,88 @@
+﻿@model WEB_353503_KOKHAN.Domain.Models.Cart
+
+@{
+    ViewData["Title"] = "Корзина заказов";
+}
+
+<div class="container">
+    <h1>Корзина заказов</h1>
+
+    @if (Model.CartItems.Any())
+    {
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Автомобиль</th>
+                        <th>Цена</th>
+                        <th>Количество</th>
+                        <th>Итого</th>
+                        <th>Действия</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.CartItems.Values)
+                    {
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="@Url.Content(item.Car.ImagePath)"
+                                         alt="@item.Car.Name"
+                                         class="img-thumbnail me-3"
+                                         style="width: 80px; height: 60px;">
+                                    <div>
+                                        <h5>@item.Car.Name</h5>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>@item.Car.Price.ToString("C")</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a asp-action="Remove" asp-route-id="@item.Car.Id" asp-route-returnUrl="@Context.Request.Path"
+                                       class="btn btn-outline-secondary btn-sm">-</a>
+                                    <span class="btn btn-outline-secondary btn-sm disabled">@item.Quantity</span>
+                                    <a asp-action="Add" asp-route-id="@item.Car.Id" asp-route-returnUrl="@Context.Request.Path"
+                                       class="btn btn-outline-secondary btn-sm">+</a>
+                                </div>
+                            </td>
+                            <td>@item.TotalPrice.ToString("C")</td>
+                            <td>
+                                <a asp-action="RemoveItem" asp-route-id="@item.Car.Id"
+                                   asp-route-returnUrl="@Context.Request.Path"
+                                   class="btn btn-danger btn-sm">
+                                    <i class="bi bi-trash"></i> Удалить
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot class="table-secondary">
+                    <tr>
+                        <td colspan="3" class="text-end"><strong>Всего:</strong></td>
+                        <td><strong>@Model.TotalPrice.ToString("C")</strong></td>
+                        <td>
+                            <a asp-action="Clear" asp-route-returnUrl="@Context.Request.Path"
+                               class="btn btn-warning btn-sm">
+                                Очистить корзину
+                            </a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="/Catalog" class="btn btn-secondary me-2">Продолжить покупки</a>
+            <a href="#" class="btn btn-success">Оформить заказ</a>
+        </div>
+    }
+    else
+    {
+        <div class="text-center py-5">
+            <i class="bi bi-cart-x" style="font-size: 4rem; color: #6c757d;"></i>
+            <h3 class="mt-3">Корзина пуста</h3>
+            <p class="text-muted">Добавьте автомобили в корзину для оформления заказа</p>
+            <a href="/Catalog" class="btn btn-primary">Перейти в каталог</a>
+        </div>
+    }
+</div>

@@ -1,0 +1,19 @@
+[
+  {
+    "Name": "Новый профиль",
+    "Projects": [
+      {
+        "Path": "WEB_353503_KOKHAN.UI\\WEB_353503_KOKHAN.UI.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "WEB_353503_KOKHAN.API\\WEB_353503_KOKHAN.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "WEB_353503_KOKHAN.Blazor.SSR\\WEB_353503_KOKHAN.Blazor.SSR.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

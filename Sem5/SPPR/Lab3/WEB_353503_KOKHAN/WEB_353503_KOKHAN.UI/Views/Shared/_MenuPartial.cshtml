@@ -1,0 +1,18 @@
+﻿@{
+    var controller = ViewContext.RouteData.Values["controller"]?.ToString()?.ToLower() ?? string.Empty;
+    var action = ViewContext.RouteData.Values["action"]?.ToString()?.ToLower() ?? string.Empty;
+}
+
+<a class="navbar-brand" asp-controller="Home" asp-action="Index">WebLab3</a>
+<div class="navbar-nav">
+    <a class="nav-item nav-link @(controller == "home" && action == "index" ? "active" : "")"
+       asp-controller="Home"
+       asp-action="Index">Лб 3</a>
+    <a class="nav-item nav-link @(controller == "car" && action == "index" ? "active" : "")"
+       asp-controller="Car"
+       asp-action="Index">Каталог</a>
+    <a class="nav-item nav-link @(controller == "admin" && action == "index" ? "active" : "")"
+       asp-controller="Admin"
+       asp-action="Index">Администрирование</a>
+</div>
+<div class="flex-grow-1"></div>

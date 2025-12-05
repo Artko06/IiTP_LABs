@@ -1,0 +1,41 @@
+﻿@model WEB_353503_KOKHAN.Domain.Models.ListModel<WEB_353503_KOKHAN.Domain.Entities.Car>
+
+@{
+    var request = ViewContext.HttpContext.Request;
+    var returnUrl = request.Path + request.QueryString.ToUriComponent();
+    string? category = request.Query["category"].ToString();
+    int currentPage = ViewBag.CurrentPage ?? 1;
+    int totalPages = ViewBag.TotalPages ?? 1;
+    string currentCategory = ViewBag.CurrentCategory ?? "Все Автомобили";
+}
+
+<div class="row mt-3" id="carContainer">
+    @foreach (var item in Model.Items)
+    {
+        <div class="col-sm-6 col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header text-center bg-white">
+                    <img src="@item.ImagePath" class="card-img-top" style="max-width: 200px; height: 100%" />
+                </div>
+                <div class="card-body">
+                    <p class="card-title fs-3 fw-bold">@item.Name</p>
+                    <p class="card-text fs-5 fw-light">@item.Description</p>
+                    <p class="card-text fs-5 fw-bold">Цена: @item.Price BYN</p>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-controller="Cart" asp-action="Add" asp-route-id="@item.Id" asp-route-returnurl="@returnUrl"
+                       class="btn btn-primary">
+                        Добавить в корзину
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<pager current-page="@currentPage"
+       total-pages="@totalPages"
+       category="@category"
+       admin="false">
+</pager>

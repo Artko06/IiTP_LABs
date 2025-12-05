@@ -1,0 +1,1 @@
+2025-10-16 23:50:28.050 +03:00 [INF] ---> request /Account/LoginPost returns 302

@@ -1,0 +1,71 @@
+     @startuml
+
+entity "Club" as clubs {
+  * id: INT <<PK>>
+  --
+  * name: VARCHAR
+  * founded_date: DATE
+  * coach: VARCHAR
+}
+
+entity "Player" as players {
+  * id: INT <<PK>>
+  --
+  * club_id: INT <<FK>>
+  --
+  * first_name: VARCHAR
+  * last_name: VARCHAR
+  * position: VARCHAR
+  * number: INT
+  * birth_date: DATE
+}
+
+entity "Stadium" as stadiums {
+  * id: INT <<PK>>
+  --
+  * name: VARCHAR
+  * city: VARCHAR
+  * capacity: INT
+}
+
+entity "Match" as matches {
+  * id: INT <<PK>>
+  --
+  * home_club_id: INT <<FK>>
+  * away_club_id: INT <<FK>>
+  * stadium_id: INT <<FK>>
+  --
+  * match_date: DATETIME
+  * status: ENUM('expected', 'playing', 'completed')
+  * home_score: INT
+  * away_score: INT
+  * referee: VARCHAR
+}
+
+entity "Sponsor" as sponsors {
+  * id: INT <<PK>>
+  --
+  * name: VARCHAR
+}
+
+entity "ClubSponsorship" as sponsorships {
+  * id: INT <<PK>>
+  --
+  * club_id: INT <<FK>>
+  * sponsor_id: INT <<FK>>
+  --
+  * start_date: DATE
+}
+
+
+clubs ||--o{ players : "has"
+
+stadiums ||--o{ matches : "has"
+
+clubs ||--o{ matches : "home club"
+clubs ||--o{ matches : "away club"
+
+clubs ||--o{ sponsorships : "has"
+sponsors ||--o{ sponsorships: "has"
+
+@enduml

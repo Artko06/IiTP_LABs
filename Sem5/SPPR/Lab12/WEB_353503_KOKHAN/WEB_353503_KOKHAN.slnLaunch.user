@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "Новый профиль",
+    "Projects": [
+      {
+        "Path": "WEB_353503_KOKHAN.API\\WEB_353503_KOKHAN.API.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "WEB_353503_KOKHAN.BlazorWasm\\WEB_353503_KOKHAN.BlazorWasm.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

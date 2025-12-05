@@ -1,0 +1,10 @@
+﻿@model WEB_353503_KOKHAN.Domain.Models.Cart
+
+<a class="nav-link" asp-controller="Cart" asp-action="Index">
+    <i class="bi bi-cart"></i>
+    Корзина
+    @if (Model.Count > 0)
+    {
+        <span class="badge bg-danger">@Model.Count</span>
+    }
+</a>

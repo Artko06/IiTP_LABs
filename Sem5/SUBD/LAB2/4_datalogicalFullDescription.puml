@@ -1,0 +1,67 @@
+@startuml
+
+entity "CLUB" {
+  * id : INT <<PK>> <<AutoIncrement>>
+  --
+  * name : VARCHAR(100) <<Unique>> <<NotNull>>
+  * founded_date : DATE <<NotNull>>
+  * coach : VARCHAR(50) <<NotNull>>
+}
+
+entity "PLAYER" {
+  * id : INT <<PK>> <<AutoIncrement>>
+  --
+  * club_id : INT <<FK>> <<NotNull>> <<Index>>
+  --
+  * first_name : VARCHAR(50) <<NotNull>>
+  * last_name : VARCHAR(50) <<NotNull>>
+  * position : VARCHAR(20) <<NotNull>>
+  * number : INT <<Check:'1-99'>>
+  * birth_date : DATE <<NotNull>>
+}
+
+entity "STADIUM" {
+  * id : INT <<PK>> <<AutoIncrement>>
+  --
+  * name : VARCHAR(100) <<Unique>> <<NotNull>>
+  * city : VARCHAR(50) <<NotNull>>
+  * capacity : INT <<Check:'>0'>>
+}
+
+entity "MATCH" {
+  * id : INT <<PK>> <<AutoIncrement>>
+  --
+  * home_club_id : INT <<FK>> <<NotNull>>
+  * away_club_id : INT <<FK>> <<NotNull>>
+  * stadium_id : INT <<FK>> <<NotNull>>
+  --
+  * match_date : DATETIME <<NotNull>>
+  * status : ENUM('expected','playing','completed') <<Default:'expected'>>
+  * home_score : INT <<Default:0>> <<Check:'>=0'>>
+  * away_score : INT <<Default:0>> <<Check:'>=0'>>
+  * referee : VARCHAR(50)
+}
+
+entity "SPONSOR" {
+  * id : INT <<PK>> <<AutoIncrement>>
+  --
+  * name : VARCHAR(100) <<Unique>> <<NotNull>>
+}
+
+entity "CLUB_SPONSORSHIP" {
+  * id : INT <<PK>> <<AutoIncrement>>
+  --
+  * club_id : INT <<FK>> <<NotNull>>
+  * sponsor_id : INT <<FK>> <<NotNull>>
+  --
+  * start_date : DATE <<NotNull>>
+}
+
+CLUB ||--o{ PLAYER : "id → club_id"
+STADIUM ||--o{ MATCH : "id → stadium_id"
+CLUB ||--o{ MATCH : "id → home_club_id"
+CLUB ||--o{ MATCH : "id → away_club_id"
+CLUB ||--o{ CLUB_SPONSORSHIP : "id → club_id"
+SPONSOR ||--o{ CLUB_SPONSORSHIP : "id → sponsor_id"
+
+@enduml

@@ -1,0 +1,28 @@
+﻿@page "/cars"
+@attribute [Authorize]
+@using Microsoft.AspNetCore.Authorization
+@using WEB_353503_KOKHAN.BlazorWasm.Components
+@using WEB_353503_KOKHAN.BlazorWasm.Services
+@using WEB_353503_KOKHAN.Domain.Entities
+
+<PageTitle>Cars</PageTitle>
+
+<CategorySelector />
+<CarsList CarSelected="OnCarSelected" /> 
+<Pager /> 
+<CarDetails SelectedCar="SelectedCar" />
+
+@code {
+    [Inject] required public IDataService DataService { get; set; }
+    Car? SelectedCar { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await DataService.GetProductListAsync();
+    }
+
+    void OnCarSelected(int id)
+    {
+        SelectedCar = DataService.Cars.FirstOrDefault(m => m.Id == id);
+    }
+}

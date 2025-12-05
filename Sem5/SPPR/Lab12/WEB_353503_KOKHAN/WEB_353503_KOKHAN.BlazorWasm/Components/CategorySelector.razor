@@ -1,0 +1,62 @@
+﻿@using WEB_353503_KOKHAN.BlazorWasm.Services
+@using WEB_353503_KOKHAN.Domain.Entities
+@inject IDataService DataService
+
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+            aria-expanded="false">
+        @if (DataService.SelectedCategory != null)
+        {
+            @DataService.SelectedCategory.Name
+        }
+        else
+        {
+            <text>Все категории</text>
+        }
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li>
+            <button class="dropdown-item" @onclick="() => SelectCategory(null)">
+                Все категории
+            </button>
+        </li>
+        @foreach (var category in DataService.Categories)
+        {
+            <li>
+                <button class="dropdown-item" @onclick="() => SelectCategory(category)">
+                    @category.Name
+                </button>
+            </li>
+        }
+    </ul>
+</div>
+
+@implements IDisposable
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        DataService.DataLoaded += OnDataLoaded;
+
+        DataService.SelectedCategory = null;
+        await DataService.GetCategoryListAsync();
+        await DataService.GetProductListAsync();
+    }
+
+    async Task SelectCategory(Category? category)
+    {
+        DataService.SelectedCategory = category;
+        DataService.CurrentPage = 1;
+        await DataService.GetProductListAsync();
+    }
+
+    private void OnDataLoaded()
+    {
+        InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose()
+    {
+        DataService.DataLoaded -= OnDataLoaded;
+    }
+}

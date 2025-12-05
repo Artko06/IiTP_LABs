@@ -1,0 +1,20 @@
+﻿@using WEB_353503_KOKHAN.Domain.Entities
+
+@if (SelectedCar != null)
+{
+    <div>
+        <h3>@SelectedCar.Name</h3>
+        <p>@SelectedCar.Description</p>
+        <img 
+            src="@SelectedCar.ImagePath"
+            class="car-image" 
+            />
+        <p>Категория: @(SelectedCar.Category?.Name)</p>
+        <p>Цена: @SelectedCar.Price BYN</p>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public Car? SelectedCar { get; set; }
+}

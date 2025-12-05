@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Вход в систему";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Вход в систему</h3>
+                </div>
+                <div class="card-body">
+                    @if (User.Identity?.IsAuthenticated == true)
+                    {
+                        <div class="alert alert-info">
+                            <p>Вы уже авторизованы как: <strong>@User.Identity.Name</strong></p>
+                            <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">На главную</a>
+
+                            @* Для GET запроса *@
+                            <a href="@Url.Action("Logout")" class="btn btn-outline-danger">Выйти</a>
+
+                            @* Для POST запроса (форма) *@
+                            <form method="post" action="@Url.Action("LogoutPost")" style="display: inline;">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-outline-danger">Выйти (POST)</button>
+                            </form>
+                        </div>
+                    }
+                    else
+                    {
+                        <form method="post" action="@Url.Action("LoginPost")">
+                            @Html.AntiForgeryToken()
+
+                            <p>Для доступа к системе требуется авторизация через Keycloak.</p>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    Войти через Keycloak
+                                </button>
+                                <a href="@Url.Action("Register")" class="btn btn-outline-success">
+                                    Зарегистрироваться
+                                </a>
+                            </div>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
