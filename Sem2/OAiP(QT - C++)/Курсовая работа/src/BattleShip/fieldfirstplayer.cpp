@@ -167,7 +167,7 @@ void FieldFirstPlayer::on_autoButton_clicked()
 
 void FieldFirstPlayer::hideShipsBeforeTheFight(BattleScene *scene)
 {
-    QVector<QGraphicsItem *> foundItems = scene->items();
+    auto foundItems = scene->items();
     for (QGraphicsItem *item : foundItems) {
         if (Ship *ship = dynamic_cast<Ship *>(item)) {
             ship->setVisible(false);

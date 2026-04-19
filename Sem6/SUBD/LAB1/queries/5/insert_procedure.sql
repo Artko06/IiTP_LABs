@@ -1,0 +1,23 @@
+CREATE OR REPLACE PROCEDURE INSERT_INTO_MYTABLE(p_id NUMBER, p_val NUMBER) IS
+    v_p_id_error_code CONSTANT NUMBER := -20001;
+BEGIN
+    IF p_id < 1 THEN
+        RAISE_APPLICATION_ERROR(v_p_id_error_code, 'p_id = ' || p_id || ' must be > 0');
+    END IF;
+
+   INSERT INTO MyTable VALUES (p_id, p_val);
+   COMMIT;
+
+   DBMS_OUTPUT.PUT_LINE('Successful insert: id = ' || p_id || ', val = ' || p_val);
+EXCEPTION
+    WHEN DUP_VAL_ON_INDEX THEN
+        DBMS_OUTPUT.PUT_LINE('ERROR insert: row with id = ' || p_id || ' already exist!');
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('ERROR: ' || SQLERRM);
+END INSERT_INTO_MYTABLE;
+
+CALL INSERT_INTO_MYTABLE(-1, 1000);
+CALL INSERT_INTO_MYTABLE(0, 1000);
+CALL INSERT_INTO_MYTABLE(1, 1000);
+CALL INSERT_INTO_MYTABLE(10000, 1000);
+CALL INSERT_INTO_MYTABLE(10001, 1000);

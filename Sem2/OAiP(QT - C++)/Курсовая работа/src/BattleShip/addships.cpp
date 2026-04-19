@@ -253,7 +253,7 @@ QPointF AddShips::generatorPoint(int amountGenerate)
 void AddShips::deleteAllShips(QGraphicsScene *scene)
 {
     listShips.resize(0);
-    QVector<QGraphicsItem *> foundItems = scene->items();
+    auto foundItems = scene->items();
     for (QGraphicsItem *item : foundItems) {
         if (Ship *ship = dynamic_cast<Ship *>(item)) {
             scene->removeItem(ship);

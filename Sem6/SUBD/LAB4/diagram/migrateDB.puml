@@ -1,0 +1,89 @@
+@startuml
+left to right direction
+
+package "SQL-запросы" {
+  class "SELECT * FROM orders WHERE user_id = X\nORDER BY created_at DESC LIMIT N" as sql0
+  class "SELECT p.*, SUM(oi.quantity) as sales\nFROM products p\nJOIN order_items oi ON p.product_id = oi.product_id\nGROUP BY p.product_id\nORDER BY sales DESC LIMIT N" as sql1
+  class "SELECT p.*, SUM(oi.quantity * oi.price) as revenue\nFROM products p\nJOIN order_items oi ON p.product_id = oi.product_id\nGROUP BY p.product_id\nORDER BY revenue DESC LIMIT N" as sql2
+  class "SELECT * FROM products WHERE category_id = C" as sql3
+  class "SELECT * FROM products WHERE category_id = C\nAND price <= P" as sql4
+  class "SELECT u.user_id, SUM(oi.quantity * oi.price) as total\nFROM users u\nJOIN orders o ON u.user_id = o.user_id\nJOIN order_items oi ON o.order_id = oi.order_id\nWHERE u.user_id = X" as sql5
+  class "SELECT DISTINCT p.* FROM products p\nJOIN order_items oi ON p.product_id = oi.product_id\nJOIN orders o ON oi.order_id = o.order_id\nWHERE o.user_id = A\nINTERSECT\nSELECT DISTINCT p.* FROM products p\nJOIN order_items oi ON p.product_id = oi.product_id\nJOIN orders o ON oi.order_id = o.order_id\nWHERE o.user_id = B" as sql6
+  class "SELECT DISTINCT p.* FROM products p\nJOIN order_items oi ON p.product_id = oi.product_id\nJOIN orders o ON oi.order_id = o.order_id\nWHERE o.user_id = A\nUNION\nSELECT DISTINCT p.* FROM products p\nJOIN order_items oi ON p.product_id = oi.product_id\nJOIN orders o ON oi.order_id = o.order_id\nWHERE o.user_id = B" as sql7
+  class "SELECT * FROM categories" as sql8
+  class "SELECT * FROM users" as sql9
+}
+
+package "Redis структуры и ключи" {
+  class "Sorted Set + Hash" as redis0 {
+    + user:{X}:orders
+    + order:{id}
+  }
+
+  class "String-кэш\nили\nSorted Set + Hash" as redis1 {
+    + cache:top_products:by_sales:{N}
+    --
+    + products:by_sales
+    + product:{id}
+  }
+
+  class "String-кэш\nили\nSorted Set + Hash" as redis2 {
+    + cache:top_products:by_revenue:{N}
+    --
+    + products:by_revenue
+    + product:{id}
+  }
+
+  class "Set + Hash" as redis3 {
+    + category:{C}:products
+    + product:{id}
+    + category:{C}
+  }
+
+  class "Set + Sorted Set + Hash" as redis4 {
+    + category:{C}:products
+    + products:by_price
+    + product:{id}
+  }
+
+  class "Sorted Set + Set + Hash" as redis5 {
+    + user:{X}:orders
+    + order:{id}:items
+    + order_item:{id}
+  }
+
+  class "Set + Hash" as redis6 {
+    + user:{A}:purchased
+    + user:{B}:purchased
+    + product:{id}
+  }
+
+  class "Set + Hash" as redis7 {
+    + user:{A}:purchased
+    + user:{B}:purchased
+    + product:{id}
+  }
+
+  class "List + Hash" as redis8 {
+    + categories:all_categories
+    + category:{id}
+  }
+
+  class "List + Hash" as redis9 {
+    + users:all_users
+    + user:{id}
+  }
+}
+
+sql0 --> redis0 : "→ ZREVRANGE user:{X}:orders\n→ HGETALL order:{id}"
+sql1 --> redis1 : "→ GET cache:top_products:by_sales:{N}\nили\n→ ZREVRANGE products:by_sales\n→ HGETALL product:{id}"
+sql2 --> redis2 : "→ GET cache:top_products:by_revenue:{N}\nили\n→ ZREVRANGE products:by_revenue\n→ HGETALL product:{id}"
+sql3 --> redis3 : "→ SMEMBERS category:{C}:products\n→ HGETALL product:{id}\n→ HGET category:{C} name"
+sql4 --> redis4 : "→ SMEMBERS category:{C}:products\n→ ZSCORE products:by_price\n→ HGETALL product:{id}"
+sql5 --> redis5 : "→ ZRANGE user:{X}:orders\n→ SMEMBERS order:{id}:items\n→ HGETALL order_item:{id}"
+sql6 --> redis6 : "→ SINTER user:{A}:purchased, user:{B}:purchased\n→ HGETALL product:{id}"
+sql7 --> redis7 : "→ SUNION user:{A}:purchased, user:{B}:purchased\n→ HGETALL product:{id}"
+sql8 --> redis8 : "→ LRANGE categories:all_categories\n→ HGET category:{id} name"
+sql9 --> redis9 : "→ LRANGE users:all_users\n→ HGETALL user:{id}"
+
+@enduml

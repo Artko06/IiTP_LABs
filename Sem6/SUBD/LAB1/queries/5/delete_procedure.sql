@@ -1,0 +1,25 @@
+CREATE OR REPLACE PROCEDURE DELETE_FROM_MYTABLE(p_id NUMBER) IS
+    v_exists NUMBER(1);
+BEGIN
+    SELECT COUNT(*) INTO v_exists FROM MyTable
+    WHERE p_id = id;
+
+    IF v_exists = 1 THEN
+        DELETE FROM MyTable
+        WHERE p_id = id;
+
+        COMMIT;
+        DBMS_OUTPUT.PUT_LINE('Successful delete: id = ' || p_id);
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('ERROR delete: id = ' || p_id || ' not found!');
+    END IF;
+EXCEPTION
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('ERROR: ' || SQLERRM);
+END;
+
+CALL DELETE_FROM_MYTABLE(-1);
+CALL DELETE_FROM_MYTABLE(0);
+CALL DELETE_FROM_MYTABLE(1);
+CALL DELETE_FROM_MYTABLE(10000);
+CALL DELETE_FROM_MYTABLE(10001);

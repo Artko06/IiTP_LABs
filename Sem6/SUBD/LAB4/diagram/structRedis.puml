@@ -1,0 +1,95 @@
+@startuml
+
+package "Hash" {
+  class "category:{id}" as CategoryHash {
+    + name
+  }
+
+  class "product:{id}" as ProductHash {
+    + name
+    + category_id
+    + price
+  }
+
+  class "user:{id}" as UserHash {
+    + name
+    + email
+    + created_at
+  }
+
+  class "order:{id}" as OrderHash {
+    + user_id
+    + created_at
+    + status
+  }
+
+  class "order_item:{id}" as OrderItemHash {
+    + order_id
+    + product_id
+    + quantity
+    + price
+  }
+}
+
+package "List" {
+  class "categories:all_categories" as CategoriesList {
+    + элементы: category_id[]
+  }
+
+  class "users:all_users" as UsersList {
+    + элементы: user_id[]
+  }
+
+  class "orders:latest_orders" as OrdersList {
+    + элементы: order_id[]
+  }
+}
+
+package "Set" {
+  class "category:{id}:products" as CategoryProductsSet {
+    + элементы: product_id[]
+  }
+
+  class "order:{id}:items" as OrderItemsSet {
+    + элементы: order_item_id[]
+  }
+
+  class "user:{id}:purchased" as UserPurchasedSet {
+    + элементы: product_id[]
+  }
+}
+
+package "Sorted Set" {
+  class "user:{id}:orders" as UserOrdersSortedSet {
+    + элементы: order_id[]
+    - score: integer (unix timestamp)
+  }
+
+  class "products:by_price" as ProductsByPriceSortedSet {
+    + элементы: product_id[]
+    - score: float (цена)
+  }
+
+  class "products:by_sales" as ProductsBySalesSortedSet {
+    + элементы: product_id[]
+    - score: float (количество продаж)
+  }
+
+  class "products:by_revenue" as ProductsByRevenueSortedSet {
+    + элементы: product_id[]
+    - score: float (выручка)
+  }
+}
+
+package "Cache" {
+  class "cache:top_products:by_sales:{N}" as CacheTopSales {
+    + значение: JSON/MessagePack
+    + TTL: 60 секунд
+  }
+
+  class "cache:top_products:by_revenue:{N}" as CacheTopRevenue {
+    + значение: JSON/MessagePack
+    + TTL: 60 секунд
+  }
+}
+@enduml

@@ -1,0 +1,54 @@
+CREATE OR REPLACE TRIGGER GROUPS_CHECK_UNIQUE
+BEFORE INSERT OR UPDATE ON GROUPS
+FOR EACH ROW
+DECLARE
+    v_count NUMBER;
+    PRAGMA AUTONOMOUS_TRANSACTION;
+BEGIN
+    IF INSERTING THEN
+        SELECT COUNT(*) INTO v_count
+        FROM GROUPS
+        WHERE id = :NEW.ID;
+
+        IF v_count > 0 THEN
+            RAISE_APPLICATION_ERROR(-20001,
+                'ID = ' || :NEW.id || ' already exists in GROUPS table');
+        END IF;
+    END IF;
+
+    SELECT COUNT(*) INTO v_count
+    FROM GROUPS
+    WHERE UPPER(NAME) = UPPER(:NEW.NAME) AND ID != :NEW.ID;
+
+    IF v_count > 0 THEN
+        RAISE_APPLICATION_ERROR(-20002, 'Group with name = "' || :NEW.NAME || '" already exists');
+    END IF;
+END GROUPS_CHECK_UNIQUE;
+
+CREATE OR REPLACE TRIGGER STUDENTS_CHECK_UNIQUE
+BEFORE INSERT OR UPDATE ON STUDENTS
+FOR EACH ROW
+DECLARE
+    v_count NUMBER;
+    PRAGMA AUTONOMOUS_TRANSACTION;
+BEGIN
+    IF INSERTING THEN
+        SELECT COUNT(*) INTO v_count
+        FROM STUDENTS
+        WHERE ID = :NEW.ID;
+
+        IF v_count > 0 THEN
+            RAISE_APPLICATION_ERROR(-20003, 'ID = ' || :NEW.ID || ' already exists');
+        END IF;
+
+    ELSIF UPDATING THEN
+        SELECT COUNT(*) INTO v_count
+        FROM STUDENTS
+        WHERE ID = :NEW.ID
+        AND ID != :OLD.ID;
+
+        IF v_count > 0 THEN
+            RAISE_APPLICATION_ERROR(-20003, 'ID = ' || :NEW.ID || ' already exists');
+        END IF;
+    END IF;
+END STUDENTS_CHECK_UNIQUE;

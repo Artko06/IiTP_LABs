@@ -1,0 +1,19 @@
+CREATE OR REPLACE FUNCTION CHECK_EVEN_ODD_RATIO
+RETURN VARCHAR2
+IS
+    v_even NUMBER;
+    v_odd  NUMBER;
+BEGIN
+    SELECT COUNT(*) INTO v_even FROM MyTable WHERE MOD(val, 2) = 0;
+    SELECT COUNT(*) INTO v_odd FROM MyTable WHERE MOD(val, 2) != 0;
+
+    IF v_even > v_odd THEN
+        RETURN 'TRUE';
+    ELSIF v_odd > v_even THEN
+        RETURN 'FALSE';
+    ELSE
+        RETURN 'EQUAL';
+    END IF;
+END CHECK_EVEN_ODD_RATIO;
+
+SELECT CHECK_EVEN_ODD_RATIO() FROM dual;

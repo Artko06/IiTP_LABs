@@ -61,7 +61,6 @@ void Ship::mousePressEvent(QGraphicsSceneMouseEvent *event)
             this->setRotation(this->rotation() + 3 * CORNER_ROTATION);
         }
     }
-    qDebug() << "click on item";
 }
 
 void Ship::mouseMoveEvent(QGraphicsSceneMouseEvent *event)

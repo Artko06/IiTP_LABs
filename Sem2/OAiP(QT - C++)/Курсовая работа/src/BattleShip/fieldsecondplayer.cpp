@@ -155,7 +155,7 @@ void FieldSecondPlayer::on_forthShipButton_clicked()
 
 void FieldSecondPlayer::hideShipsBeforeTheFight(BattleScene *scene)
 {
-    QVector<QGraphicsItem *> foundItems = scene->items();
+    auto foundItems = scene->items();
     for (QGraphicsItem *item : foundItems) {
         if (Ship *ship = dynamic_cast<Ship *>(item)) {
             ship->setVisible(false);

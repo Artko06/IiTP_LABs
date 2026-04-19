@@ -217,7 +217,7 @@ void Battlefield::checkToKill(BattleScene *scene, int numberShotedShip)
     for (int i = 1; i < AMOUNT_CELLS_BY_WIDTH + 1; ++i) {
         for (int j = 1; j < AMOUNT_CELLS_BY_HEIGHT + 1; ++j) {
             if (scene->finalPosShips[i][j] == numberShotedShip + deltaShot) {
-                QVector<QGraphicsItem *> itemsAtPoint = scene->items(QRectF((j - 1) * SIZE_ONE_SELL,
+                auto itemsAtPoint = scene->items(QRectF((j - 1) * SIZE_ONE_SELL,
                                                                             (i - 1) * SIZE_ONE_SELL,
                                                                             SIZE_ONE_SELL,
                                                                             SIZE_ONE_SELL));
@@ -281,7 +281,7 @@ void Battlefield::botShoting()
 
 void Battlefield::removeAimItem()
 {
-    QVector<QGraphicsItem *> itemsAtPoint = battleFirstScene->items(
+    auto itemsAtPoint = battleFirstScene->items(
         QRectF(stepBot.x(), stepBot.y(), SIZE_ONE_SELL, SIZE_ONE_SELL));
 
     for (QGraphicsItem *item : itemsAtPoint) {
@@ -373,7 +373,7 @@ void Battlefield::generateBotNumber()
 
 void Battlefield::setShipsBeforeTheDestroyed(BattleScene *scene, QPointF point)
 {
-    QVector<QGraphicsItem *> shipsOnTheField = scene->items();
+    auto shipsOnTheField = scene->items();
     for (QGraphicsItem *item : shipsOnTheField) {
         if (Ship *ship = dynamic_cast<Ship *>(item)) {
             if (ship->getStartPoint() == point) {
@@ -385,7 +385,7 @@ void Battlefield::setShipsBeforeTheDestroyed(BattleScene *scene, QPointF point)
 
 void Battlefield::showAllShips()
 {
-    QVector<QGraphicsItem *> shipsOnTheField = battleFirstScene->items();
+    auto shipsOnTheField = battleFirstScene->items();
     for (QGraphicsItem *item : shipsOnTheField) {
         if (Ship *ship = dynamic_cast<Ship *>(item)) {
             ship->setVisible(true);
