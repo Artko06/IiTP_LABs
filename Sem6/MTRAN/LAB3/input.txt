@@ -1,0 +1,45 @@
+import Data.Vect
+import Data.SortedMap
+
+numbersList : List Int
+numbersList = [10, 20, 30]
+
+checkValue : Int -> Double -> String
+checkValue x d = 
+    let n : Nat = 5 in 
+    if cast x > n && d > 0.0 
+       then "Greater than 5 and Double is positive" 
+       else "Condition not met"
+
+processData : (Int, String) -> Vect 3 Int -> String
+processData (id, name) vec = 
+    case name of
+        "Idris" => "Language match!"
+        _       => "Unknown"
+
+forLoop : Nat -> IO ()
+forLoop Z = putStrLn "Done"
+forLoop (S k) = do
+    putStrLn ("Iteration: " ++ show k)
+    forLoop k
+
+main : IO ()
+main = do
+    let result = checkValue 10 3.14159
+    putStrLn result
+    
+    let myPair : (Int, String) = (1, "Idris")
+    let myVec : Vect 3 Int = [1, 2, 3]
+    let myChar : Char = 'A'
+    putStrLn (processData myPair myVec)
+    
+    let bigInt : Integer = 12345678901234567890
+    let bVal : Bits8 = 255
+    let dict : SortedMap String Int = insert "key" 42 empty
+    
+    forLoop 3
+    
+error1 = 1.2.3
+error2 = 10e
+error3 = #
+error4 = "this is an unclosed string
